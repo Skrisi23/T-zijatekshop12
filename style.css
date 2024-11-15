@@ -1,3 +1,4 @@
+
 .product {
 	flex-basis: 50%;
 	max-width: 50%;
@@ -157,5 +158,6 @@
 	  float: none;
 	  display: block;
 	  text-align: left;
+	       color: blue;
 	}
   } 
