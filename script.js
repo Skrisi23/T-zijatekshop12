@@ -145,4 +145,4 @@ function modifyQuantity(index) {
       alert('Kérlek, érvényes pozitív számot adj meg!');
     }
   }
-}
+}  
