@@ -1,6 +1,11 @@
 // Az aktív kosár elemeit tároló tömb
 var cartItems = [];
 
+// Véletlenszerű rendelésazonosító generálása
+function generateOrderID() {
+  return 'ORD-' + Math.floor(Math.random() * 1000000);
+}
+
 // Kosárba helyezés gombra kattintás eseménykezelője
 document.addEventListener('click', function(event) {
   if (event.target.classList.contains('add-to-cart')) {
@@ -14,68 +19,19 @@ document.addEventListener('click', function(event) {
 
 // Kosárba helyezés függvény
 function addToCart(name, price) {
-  cartItems.push({ name: name, price: price });
-  alert('A termék bekerült a kosárba!');
+  var existingItem = cartItems.find(item => item.name === name);
 
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+    cartItems.push({ name: name, price: price, quantity: 1 });
+  }
+
+  alert('A termék bekerült a kosárba!');
   updateCart();
 }
 
 // Kosár frissítése
-function updateCart() {
-  var cartItemsElement = document.getElementById('cart-items');
-  var totalPriceElement = document.getElementById('total-price');
-  var totalPrice = 0;
-
-  cartItemsElement.innerHTML = '';
-
-  if (cartItems.length === 0) {
-    cartItemsElement.innerHTML = '<li class="list-group-item">A kosár üres</li>';
-  } else {
-    cartItems.forEach(function(item) {
-      var listItem = document.createElement('li');
-      listItem.classList.add('list-group-item');
-      listItem.textContent = item.name + ' - ' + item.price + ' Ft';
-      cartItemsElement.appendChild(listItem);
-
-      totalPrice += item.price;
-    });
-  }
-
-  totalPriceElement.textContent = 'Összesen: ' + totalPrice + ' Ft';
-}
-
-// Betöltéskor frissítsd a kosarat, ha szükséges
-document.addEventListener('DOMContentLoaded', function() {
-  var savedCart = localStorage.getItem('cartItems');
-  if (savedCart) {
-    cartItems = JSON.parse(savedCart);
-    updateCart();
-  }
-});
-
-// Kilépéskor mentsd el a kosarat
-window.addEventListener('beforeunload', function() {
-  localStorage.setItem('cartItems', JSON.stringify(cartItems));
-});
-
-// Fizetés gombra kattintás eseménykezelője
-var checkoutButton = document.getElementById('checkout');
-checkoutButton.addEventListener('click', function() {
-  performCheckout();
-});
-
-// Fizetés
-function performCheckout() {
-  var totalPrice = document.getElementById('total-price').textContent;
-  var confirmationMessage = 'Fizetés megerősítve. Fizetendő összeg ' + totalPrice + ' Köszönjük a vásárlást!';
-
-  console.log('checkout function called'); // Új sor
-  alert(confirmationMessage);
-
-  cartItems.length = 0; // Kosár kiürítése
-  updateCart();
-}
-// modosit gomb
 function updateCart() {
   var cartItemsElement = document.getElementById('cart-items');
   var totalPriceElement = document.getElementById('total-price');
@@ -116,27 +72,10 @@ function updateCart() {
   totalPriceElement.textContent = 'Összesen: ' + totalPrice + ' Ft';
 }
 
-function addToCart(name, price) {
-  var existingItem = cartItems.find(item => item.name === name);
-
-  if (existingItem) {
-    // Ha a termék már szerepel a kosárban, növeld a darabszámát
-    existingItem.quantity++;
-  } else {
-    // Ha még nem szerepel a kosárban, adj hozzá új elemként
-    cartItems.push({ name: name, price: price, quantity: 1 });
-  }
-
-  alert('A termék bekerült a kosárba!');
-
-  updateCart();
-}
-
+// Mennyiség módosítása
 function modifyQuantity(index) {
-  let db = document.getElementById("db");
   var newQuantity = prompt('Adj meg egy új mennyiséget:');
   if (newQuantity !== null && newQuantity !== '') {
-    // Ellenőrizd, hogy a megadott érték szám
     newQuantity = parseInt(newQuantity);
     if (!isNaN(newQuantity) && newQuantity >= 0) {
       cartItems[index].quantity = newQuantity;
@@ -145,4 +84,72 @@ function modifyQuantity(index) {
       alert('Kérlek, érvényes pozitív számot adj meg!');
     }
   }
-}  
+}
+
+// Betöltéskor frissítsd a kosarat, ha szükséges
+document.addEventListener('DOMContentLoaded', function() {
+  var savedCart = localStorage.getItem('cartItems');
+  if (savedCart) {
+    cartItems = JSON.parse(savedCart);
+    updateCart();
+  }
+});
+
+// Kilépéskor mentsd el a kosarat
+window.addEventListener('beforeunload', function() {
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+});
+
+// Fizetés gombra kattintás eseménykezelője
+var checkoutButton = document.getElementById('checkout');
+checkoutButton.addEventListener('click', function() {
+  var paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+  paymentModal.show();
+});
+
+// Fizetési mód választása és események
+document.getElementById('bankTransfer').addEventListener('change', function() {
+  document.getElementById('remarkBox').style.display = 'block';
+
+  // Rendelésazonosító generálása és automatikus kitöltése a megjegyzés mezőben
+  var orderID = generateOrderID();
+  var remarksField = document.getElementById('remarks');
+  remarksField.value = 'Rendelés azonosító: ' + orderID + '\nKérjük, használja ezt az azonosítót az utalás közleményében.';
+
+  // E-mail mező megjelenítése
+  document.getElementById('emailInput').style.display = 'block';
+});
+
+document.getElementById('cashOnDelivery').addEventListener('change', function() {
+  document.getElementById('remarkBox').style.display = 'none';
+  document.getElementById('emailInput').style.display = 'none';
+});
+
+// Fizetési mód megerősítése
+document.getElementById('confirmPayment').addEventListener('click', function() {
+  var selectedOption = document.querySelector('input[name="paymentOption"]:checked');
+  var email = document.getElementById('emailInput').value;
+
+  if (selectedOption) {
+    if (selectedOption.value === 'Fizetés előre utalással') {
+      var remarks = document.getElementById('remarks').value;
+      alert(
+        'Kiválasztott fizetési mód: ' + selectedOption.value +
+        '.\nSzámlaszám: 12345678-12345678-12345678\nMegjegyzés: ' + remarks +
+        '\nE-mail: ' + email
+      );
+    } else {
+      alert('Kiválasztott fizetési mód: ' + selectedOption.value + '. Köszönjük a vásárlást!');
+    }
+
+    cartItems.length = 0;
+    updateCart();
+
+    var paymentModal = bootstrap.Modal.getInstance(document.getElementById('paymentModal'));
+    paymentModal.hide();
+  } else {
+    alert('Kérlek, válassz egy fizetési módot!');
+  }
+});
+
+
