@@ -27,7 +27,6 @@ function addToCart(name, price) {
     cartItems.push({ name: name, price: price, quantity: 1 });
   }
 
-  alert('A termék bekerült a kosárba!');
   updateCart();
 }
 
@@ -59,9 +58,17 @@ function updateCart() {
         modifyQuantity(index);
       };
 
+      var deleteButton = document.createElement('button');
+      deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
+      deleteButton.textContent = 'Törlés';
+      deleteButton.onclick = function() {
+        deleteItem(index);
+      };
+
       listItem.appendChild(itemName);
       listItem.appendChild(itemQuantity);
       listItem.appendChild(modifyButton);
+      listItem.appendChild(deleteButton);
 
       cartItemsElement.appendChild(listItem);
 
@@ -70,6 +77,12 @@ function updateCart() {
   }
 
   totalPriceElement.textContent = 'Összesen: ' + totalPrice + ' Ft';
+}
+
+// Termék törlésének funkciója
+function deleteItem(index) {
+  cartItems.splice(index, 1); // Eltávolítja a terméket a kosárból
+  updateCart(); // Frissíti a kosár tartalmát
 }
 
 // Mennyiség módosítása
@@ -115,14 +128,11 @@ document.getElementById('bankTransfer').addEventListener('change', function() {
   var orderID = generateOrderID();
   var remarksField = document.getElementById('remarks');
   remarksField.value = 'Rendelés azonosító: ' + orderID + '\nKérjük, használja ezt az azonosítót az utalás közleményében.';
-
-  // E-mail mező megjelenítése
-  document.getElementById('emailInput').style.display = 'block';
 });
 
 document.getElementById('cashOnDelivery').addEventListener('change', function() {
   document.getElementById('remarkBox').style.display = 'none';
-  document.getElementById('emailInput').style.display = 'none';
+  document.getElementById('emailInput').style.display = 'block';
 });
 
 // Fizetési mód megerősítése
@@ -130,26 +140,18 @@ document.getElementById('confirmPayment').addEventListener('click', function() {
   var selectedOption = document.querySelector('input[name="paymentOption"]:checked');
   var email = document.getElementById('emailInput').value;
 
-  if (selectedOption) {
-    if (selectedOption.value === 'Fizetés előre utalással') {
-      var remarks = document.getElementById('remarks').value;
-      alert(
-        'Kiválasztott fizetési mód: ' + selectedOption.value +
-        '.\nSzámlaszám: 12345678-12345678-12345678\nMegjegyzés: ' + remarks +
-        '\nE-mail: ' + email
-      );
-    } else {
-      alert('Kiválasztott fizetési mód: ' + selectedOption.value + '. Köszönjük a vásárlást!');
-    }
+  if (!email.includes('@')) {
+    alert('Érvénytelen email cím!');
+    return;
+  }
 
+  if (selectedOption) {
+    alert('Kiválasztott fizetési mód: ' + selectedOption.value + '. Köszönjük a vásárlást!');
     cartItems.length = 0;
     updateCart();
-
     var paymentModal = bootstrap.Modal.getInstance(document.getElementById('paymentModal'));
     paymentModal.hide();
   } else {
     alert('Kérlek, válassz egy fizetési módot!');
   }
 });
-
-
