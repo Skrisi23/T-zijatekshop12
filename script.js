@@ -106,6 +106,30 @@ document.addEventListener('DOMContentLoaded', function() {
     cartItems = JSON.parse(savedCart);
     updateCart();
   }
+
+  // Fizetési mód kezelése
+  const cashOnDelivery = document.getElementById('cashOnDelivery');
+  const cashOnDeliveryBox = document.getElementById('cashOnDeliveryBox');
+  const bankTransfer = document.getElementById('bankTransfer');
+  const remarkBox = document.getElementById('remarkBox');
+
+  cashOnDelivery.addEventListener('change', function() {
+    if (this.checked) {
+      cashOnDeliveryBox.style.display = 'block';
+      remarkBox.style.display = 'none';
+    } else {
+      cashOnDeliveryBox.style.display = 'none';
+    }
+  });
+
+  bankTransfer.addEventListener('change', function() {
+    if (this.checked) {
+      remarkBox.style.display = 'block';
+      cashOnDeliveryBox.style.display = 'none';
+    } else {
+      remarkBox.style.display = 'none';
+    }
+  });
 });
 
 // Kilépéskor mentsd el a kosarat
@@ -132,16 +156,22 @@ document.getElementById('bankTransfer').addEventListener('change', function() {
 
 document.getElementById('cashOnDelivery').addEventListener('change', function() {
   document.getElementById('remarkBox').style.display = 'none';
-  document.getElementById('emailInput').style.display = 'block';
+  document.getElementById('cashOnDeliveryBox').style.display = 'block';
 });
 
 // Fizetési mód megerősítése
 document.getElementById('confirmPayment').addEventListener('click', function() {
   var selectedOption = document.querySelector('input[name="paymentOption"]:checked');
-  var email = document.getElementById('emailInput').value;
+  var emailInputCashOnDelivery = document.getElementById('emailInputCashOnDelivery').value;
+  var emailInputBankTransfer = document.getElementById('emailInput').value;
 
-  if (!email.includes('@')) {
-    alert('Érvénytelen email cím!');
+  if (selectedOption.value === 'Utánvétes fizetés' && !emailInputCashOnDelivery.includes('@')) {
+    alert('Érvénytelen email cím az utánvétes fizetéshez!');
+    return;
+  }
+
+  if (selectedOption.value === 'Fizetés előre utalással' && !emailInputBankTransfer.includes('@')) {
+    alert('Érvénytelen email cím az előre utaláshoz!');
     return;
   }
 
@@ -153,5 +183,27 @@ document.getElementById('confirmPayment').addEventListener('click', function() {
     paymentModal.hide();
   } else {
     alert('Kérlek, válassz egy fizetési módot!');
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Fizetési mód kezelése
+  let totalAmount = document.getElementById("totalAmount");
+  let paymentMethods = document.getElementsByName("paymentMethod");
+  const cashOnDeliveryFee = 500;
+  
+  paymentMethods.forEach(method => {
+      method.addEventListener("change", function () {
+          let amount = parseFloat(totalAmount.dataset.originalAmount);
+          if (this.value === "utanvet") {
+              amount += cashOnDeliveryFee;
+          }
+          totalAmount.innerText = amount.toFixed(2) + " Ft";
+      });
+  });
+
+  // Tároljuk az eredeti összeget egy adatkatribútumban
+  if (!totalAmount.dataset.originalAmount) {
+      totalAmount.dataset.originalAmount = totalAmount.innerText.replace(" Ft", "");
   }
 });
