@@ -6,6 +6,23 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    /* Kosár ikon animáció */
+    @keyframes flyToCart {
+        0% {
+            transform: scale(10);
+            opacity: 10;
+        }
+        100% {
+            transform: scale(0.1) translate(-45px, -35px);
+            opacity: 10;
+        }
+    }
+
+    .cart-icon-animation {
+        animation: flyToCart 0.5s ease-in-out forwards;
+    }
+</style>
 </head>
 <body>
   <div class="topnav" id="myTopnav">
@@ -25,67 +42,83 @@
 <br>
   <div id="product-list" class="row">
     <div class="product" data-price="3940"> 
-      <span class="product-name">Dum Bum midlle ORIGINAL 20 db - 3 940Ft<img src="https://www.ekopiro.hu/resources/App/large/201709062154480.dumbum-middle-20ks-petardy.jpg" alt=""></span>
+      <div>3940Ft</div>
+      <span class="product-name">Dum Bum midlle ORIGINAL 20 db<img src="https://www.ekopiro.hu/resources/App/large/201709062154480.dumbum-middle-20ks-petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
-    <div class="product" data-price="1488"> 
-      <span class="product-name">Viper 1 - 20db - 1 488Ft <img src="https://www.ekopiro.hu/resources/App/large/201709062259250.viper-1-2g-20ks-petardy.jpg" alt=""></span>
+    <div class="product" data-price="1488">
+      <div>1488Ft</div> 
+      <span class="product-name">Viper 1 pedárda - 20db<img src="https://www.ekopiro.hu/resources/App/large/201709062259250.viper-1-2g-20ks-petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="1250"> 
-      <span class="product-name">Dum Bum F2 dörzsfejes 20db - 1 250Ft <img src="https://www.ekopiro.hu/resources/App/large/202010231943050.dum-bum-f2-20ks-petardy.jpg" alt=""></span>
+      <div>1250Ft</div>
+      <span class="product-name">Dum Bum F2 dörzsfejes 20db<img src="https://www.ekopiro.hu/resources/App/large/202010231943050.dum-bum-f2-20ks-petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
-    <div class="product" data-price="3600"> 
-      <span class="product-name">Petárda Achtung 4db - 3 600Ft <img src="https://www.ekopiro.hu/resources/App/large/201810162312280.petardy-achtung-4ks-petardy.jpg" alt=""></span>
+    <div class="product" data-price="3600">
+      <div>3600Ft</div> 
+      <span class="product-name">Petárda Achtung 4db<img src="https://www.ekopiro.hu/resources/App/large/201810162312280.petardy-achtung-4ks-petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="4080"> 
-      <span class="product-name">Petárda C4 20db - 4 080Ft <img src="https://www.ekopiro.hu/resources/App/large/Petarda-C4_petardy.jpg" alt=""></span>
+      <div>4080Ft</div>
+      <span class="product-name">Petárda C4 20db<img src="https://www.ekopiro.hu/resources/App/large/Petarda-C4_petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="1250"> 
-      <span class="product-name">Dum Bum 120 dörzsfejes 10db - 1 250Ft <img src="https://www.ekopiro.hu/resources/App/large/202010232022520.dum-bum-120-10ks-petardy.jpg" alt=""></span>
+      <div>1250Ft</div>
+      <span class="product-name">Dum Bum 120 dörzsfejes 10db<img src="https://www.ekopiro.hu/resources/App/large/202010232022520.dum-bum-120-10ks-petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="2400"> 
-      <span class="product-name">Hammer H4 crazy 10db - 2 400Ft <img src="https://www.ekopiro.hu/resources/App/large/Hammer-H4-crazy-10ks_petardy.jpg" alt=""></span>
+      <div>2400Ft</div>
+      <span class="product-name">Hammer H4 crazy 10db<img src="https://www.ekopiro.hu/resources/App/large/Hammer-H4-crazy-10ks_petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="4230"> 
-      <span class="product-name">Exploder 5 5db - 4 230Ft <img src="https://www.ekopiro.hu/resources/App/large/Exploder-5_petardy.jpg" alt=""></span>
+      <div>4230Ft</div>
+      <span class="product-name">Exploder 5 5db<img src="https://www.ekopiro.hu/resources/App/large/Exploder-5_petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="1872"> 
-      <span class="product-name">Petárdák Pluton 20db - 1 872Ft <img src="https://www.ekopiro.hu/resources/App/large/Pluton-20ks_petardy.png" alt=""></span>
+      <div>1872Ft</div>
+      <span class="product-name">Petárdák Pluton 20db<img src="https://www.ekopiro.hu/resources/App/large/Pluton-20ks_petardy.png" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="2208"> 
-      <span class="product-name">Achtung 20db - 2 208Ft <img src="https://www.ekopiro.hu/resources/App/large/Achtung-H2-20ks_petardy.jpg" alt=""></span>
+      <div>2208Ft</div>
+      <span class="product-name">Achtung petárda 20db<img src="https://www.ekopiro.hu/resources/App/large/Achtung-H2-20ks_petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="1128"> 
-      <span class="product-name">Megatresk Explo 10db - 1 128Ft <img src="https://www.ekopiro.hu/resources/App/large/201810162312280.megatresk-10ks-petardy.jpg" alt=""></span>
+      <div>1128Ft</div>
+      <span class="product-name">Megatresk Explo 10db<img src="https://www.ekopiro.hu/resources/App/large/201810162312280.megatresk-10ks-petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="3552">
-      <span class="product-name">Megatron 4db - 3 552Ft <img src="https://www.ekopiro.hu/resources/App/large/201810162312280.megatron-4ks-petardy.jpg" alt=""></span>
+      <div>3552Ft</div>
+      <span class="product-name">Megatron petárda 4db<img src="https://www.ekopiro.hu/resources/App/large/201810162312280.megatron-4ks-petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="1440">
-      <span class="product-name">Big Bang 20db - 1 440Ft <img src="https://www.ekopiro.hu/resources/App/large/Big-bang_petardy.jpg" alt=""></span>
+      <div>1440Ft</div>
+      <span class="product-name">Big Bang 20db<img src="https://www.ekopiro.hu/resources/App/large/Big-bang_petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
-    <div class="product" data-price="1488"> 
-      <span class="product-name">Bomb 20db 2g - 1 488Ft <img src="https://www.ekopiro.hu/resources/App/large/201709062259250.bomb-2g-20ks-petardy.jpg" alt=""></span>
+    <div class="product" data-price="1488">
+      <div>1488Ft</div> 
+      <span class="product-name">Bomb 20db 2g<img src="https://www.ekopiro.hu/resources/App/large/201709062259250.bomb-2g-20ks-petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="1344">
-      <span class="product-name">Kalasnyikov 60 lövés - 1 344Ft <img src="https://www.ekopiro.hu/resources/App/large/201709062154490.kalasnikov-60ran-petardy.jpg" alt=""></span>
+      <div>1344Ft</div>
+      <span class="product-name">Kalasnyikov 60 lövés<img src="https://www.ekopiro.hu/resources/App/large/201709062154490.kalasnikov-60ran-petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="1640">
-      <span class="product-name">Dum Bum 30 db - 1 640Ft <img src="https://www.ekopiro.hu/resources/App/large/Dum-Bum-30ks_petardy.jpg" alt=""></span>
+      <div>1640Ft</div>
+      <span class="product-name">Dum Bum 30 db<img src="https://www.ekopiro.hu/resources/App/large/Dum-Bum-30ks_petardy.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
   <!-- bootstrap -->
@@ -95,17 +128,36 @@
   <script src="script.js"></script>
   
   <script>
-     function myFunction() {
+    // Kosárba gomb animáció
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('add-to-cart')) {
+            const cartIcon = document.createElement('div');
+            cartIcon.innerHTML = '🛒';
+            cartIcon.style.position = 'fixed';
+            cartIcon.style.top = event.clientY + 'px';
+            cartIcon.style.left = event.clientX + 'px';
+            cartIcon.style.fontSize = '24px';
+            cartIcon.style.zIndex = '1000';
+            document.body.appendChild(cartIcon);
+
+            cartIcon.classList.add('cart-icon-animation');
+
+            setTimeout(() => {
+                cartIcon.remove();
+            }, 500);
+        }
+    });
+
+    function myFunction() {
         var x = document.getElementById("myTopnav");
         if (x.className === "topnav") {
-          x.className += " responsive";
+            x.className += " responsive";
         } else {
-          x.className = "topnav";
+            x.className = "topnav";
         }
-      }
-      </script> 
+    }
+</script>
   
 
-<div id="navigation_up_down_87260"><noscript>Javascript is disable - <a href="http://www.webestools.com/">Webestools</a> - <a href="http://www.webestools.com/navigation-buttons-generator-scroll-top-bottom-shortcut-page-up-down-scroll-buttons-javascript.html">Navigation Buttons Generator html scroll up down</a></noscript><script type="text/javascript" src="http://services.webestools.com/navigation_up_down/2-87260-right.js"></script></div>
 </body>
 </html>
