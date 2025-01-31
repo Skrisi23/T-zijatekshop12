@@ -63,7 +63,7 @@
   
   .add-to-cart {
 	background-color: black;
-	color: red;
+	color: rgb(82, 8, 194);
 	border: none;
 	border-radius: 5px;
 	padding: 5px 15px;
@@ -124,12 +124,12 @@
   }
   
   .topnav a:hover {
-	background-color: rgb(138, 0, 0);
+	background-color: rgb(79, 3, 211);
 	color: black;
   }
   
   .topnav a.active {
-	background-color: rgb(30, 32, 95);
+	background-color: rgb(79, 3, 211);
 	color: rgb(201, 201, 201);
   }
   
@@ -158,3 +158,7 @@
 	  text-align: left;
 	}
   }
+
+  
+
+  
