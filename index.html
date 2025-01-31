@@ -8,7 +8,168 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
         /* Kosár ikon animáció */
+        @keyframes flyToCart {<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <title>Pyromaniasokshop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        /* Kosár ikon animáció */
         @keyframes flyToCart {
+            0% {
+                transform: scale(10);
+                opacity: 10;
+            }
+            100% {
+                transform: scale(0.1) translate(-45px, -35px);
+                opacity: 10;
+            }
+        }
+
+        .cart-icon-animation {
+            animation: flyToCart 0.5s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html"class="active">Tüzijátékok</a>
+        <a href="hangosabbcucok.html">Vadriasztók</a>
+        <a href="raketak.html">Rakéták</a>
+        <a href="szabalyzat.html">Használat előtt érdemes elolvasni</a>
+        <a href="Kosaram.html">Kosaram</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <div class="container">
+        <h1 class="text-center">Tüzijátékok</h1>
+
+
+        <br>
+        <div id="product-list" class="row">
+          <div class="product" data-price="29000">
+            <div>29000Ft</div> 
+            <span class="product-name">BANK 49 lövés<img src="https://drive.google.com/thumbnail?id=1TRRGnVImerM-Ksa1ncWGAVZkqj_1nIhQ&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="22000">
+            <div>22000Ft</div> 
+            <span class="product-name">ASTEROID 35 lövés<img src="https://drive.google.com/thumbnail?id=1oJuozVMyWXFx1ZzvKa_cUe4m-O5OcNuL&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="4500">
+            <div>4500Ft</div> 
+            <span class="product-name">BATTLESHIP 16 lövés<img src="https://drive.google.com/thumbnail?id=149Dngw8d_ODcP21UrZFO3vCFQeHYxC9i&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="5000">
+            <div>5000Ft</div> 
+            <span class="product-name">DIAMOND 19 lövés<img src="https://drive.google.com/thumbnail?id=1JVckUnDMnzyWvi6Rf7aJEKla9Ae0S0sS&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="46000">
+            <div>46000Ft</div> 
+            <span class="product-name">FIRST CLASS 25 lövés<img src="https://drive.google.com/thumbnail?id=1Gr194EakN-3OxBWMRE47c4D_aAgxuYPK&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="45000">
+            <div>45000Ft</div> 
+            <span class="product-name">EUFORIA 54 lövés<img src="https://drive.google.com/thumbnail?id=1rUl1kv86sqF5j323eYdA-foF5V9Y0lA6&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="1600"> 
+            <div>1600Ft</div>
+            <span class="product-name">K.O.AIRBOMB 3DB/CS<img src="https://drive.google.com/thumbnail?id=1f_YikFa232HFMaTgYjDmy5WdmDkmItBE&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="600"> 
+            <div>600Ft</div>
+            <span class="product-name">KATYUSA 25 lövés<img src="https://drive.google.com/thumbnail?id=1MuGV_LNMO88IVvXtUFyftEv9tb9JnrS5&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="300">
+            <div>300Ft</div> 
+            <span class="product-name">FLASH POP-POP 50DB/CS<img src="https://drive.google.com/thumbnail?id=1ddtiwRrvuo85FGoe5R0QHqktuScijFkR&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="500"> 
+            <div>500Ft</div>
+            <span class="product-name">MAGIC WHIP RECSEGŐ 2DB/CS<img src="https://drive.google.com/thumbnail?id=1mKl3Ol-nKUJqpFAfhy_MJ4Q_lMI4Vqpk&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="500"> 
+            <div>500Ft</div>
+            <span class="product-name">BIENE - Röppentyű 6DB/CS<img src="https://drive.google.com/thumbnail?id=14GcB7UoWT5Unt6mvrujXJ6E8zZdY-ZFy&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="500">
+            <div>500Ft</div>
+            <span class="product-name">BLITZ - RECSEGŐ tojás 12DB/CS<img src="https://drive.google.com/thumbnail?id=1CcD5jARnwpS8BG8dU6MN_gm5StGtZuPg&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="1200">
+            <div>1200Ft</div>
+            <span class="product-name">SHOT MIX RÓMAIGYERTYA 20MM 5 LÖVÉS<img src="https://drive.google.com/thumbnail?id=1fxvkAWpj-pbE0pDhKk4ZLzhXIKmfUyks&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="800"> 
+            <div>800Ft</div>
+            <span class="product-name">MYSTIC C BALLS RÓMAI GYERTYA 20 LÖVÉS 70 CM<img src="https://drive.google.com/thumbnail?id=1qrrzYodpCA9xqgRRtxNBFcB0v2XWGKOP&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="800">
+            <div>800Ft</div>
+            <span class="product-name">WINCHESTER RÓMAI GYERTYA 10 LÖVÉS 70 CM<img src="https://drive.google.com/thumbnail?id=1Rj-5S-zTwyQVODvKrjnRZlwAZli3IWuZ&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+          <div class="product" data-price="3500">
+            <div>3500Ft</div>
+            <span class="product-name">BIG SHOT AIRBOMB (TALPAS) 3DB/CS<img src="https://drive.google.com/thumbnail?id=1wOlmEwRaO_V5uKTDxQXoWoSMizyFolGe&sz800" alt=""></span>
+            <button class="add-to-cart">Kosárba</button>
+          </div>
+    </div>
+    <script>
+        // Kosárba gomb animáció
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('add-to-cart')) {
+                const cartIcon = document.createElement('div');
+                cartIcon.innerHTML = '🛒';
+                cartIcon.style.position = 'fixed';
+                cartIcon.style.top = event.clientY + 'px';
+                cartIcon.style.left = event.clientX + 'px';
+                cartIcon.style.fontSize = '24px';
+                cartIcon.style.zIndex = '1000';
+                document.body.appendChild(cartIcon);
+
+                cartIcon.classList.add('cart-icon-animation');
+
+                setTimeout(() => {
+                    cartIcon.remove();
+                }, 500);
+            }
+        });
+
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
+
             0% {
                 transform: scale(10);
                 opacity: 10;
