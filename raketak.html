@@ -6,6 +6,23 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    /* Kosár ikon animáció */
+    @keyframes flyToCart {
+        0% {
+            transform: scale(10);
+            opacity: 10;
+        }
+        100% {
+            transform: scale(0.1) translate(-45px, -35px);
+            opacity: 10;
+        }
+    }
+
+    .cart-icon-animation {
+        animation: flyToCart 0.5s ease-in-out forwards;
+    }
+</style>
 </head>
 <body>
 
@@ -25,67 +42,83 @@
 <!-- Termékek -->
 <br>
   <div id="product-list" class="row">
-    <div class="product" data-price="2200"> 
+    <div class="product" data-price="2200">
+      <div>2200Ft</div> 
       <span class="product-name">Tomahawk Rocket 12 db - 2 200Ft<img src="https://www.ekopiro.hu/resources/App/large/201709062154520.tmahawkrocketmale-12ks-rakety.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="8190"> 
+      <div>8190Ft</div>
       <span class="product-name">Best price rocket 9db - 8 190Ft <img src="https://www.ekopiro.hu/resources/App/large/Best-price-rocket-9ks_rakety0.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="7400"> 
+      <div>7400Ft</div>
       <span class="product-name">Troll Rakéták 9db - 7 400Ft <img src="https://www.ekopiro.hu/resources/App/large/Troll-Rocket-9ks_rakety0.png" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="5330"> 
+      <div>5330Ft</div>
       <span class="product-name">Dum Bum Rocket with scream 5db - 5 330Ft <img src="https://www.ekopiro.hu/resources/App/large/Raketa-Dum-Bum-s-piskanim-5ks_rakety0.png" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="6424"> 
+      <div>6424Ft</div>
       <span class="product-name">Scream Rocket 2 3-Stage 6db - 6 424Ft <img src="https://www.ekopiro.hu/resources/App/large/Scream-Rocket-2-3-Stage-6ks_rakety0.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="9420"> 
+      <div>9420Ft</div>
       <span class="product-name">Bazooka F 1 db - 9 420Ft <img src="https://www.ekopiro.hu/resources/App/large/Bazooka-A-_rakety.png" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="19975"> 
+      <div>19975Ft</div>
       <span class="product-name">Zoombie invasion 21db - 19 975Ft <img src="https://www.ekopiro.hu/resources/App/large/Zombie-Invasion-21ks_rakety.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="11880"> 
+      <div>11880Ft</div>
       <span class="product-name">Signature range rocket F2 5 db - 11 880Ft <img src="https://www.ekopiro.hu/resources/App/large/Signature-range-rocketF2_rakety.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="15400"> 
+      <div>15400Ft</div>
       <span class="product-name">Fly Hawk 17 db - 15 400Ft <img src="https://www.ekopiro.hu/resources/App/large/201709062319090.flyhawk-mix-rakety.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="32160"> 
+      <div>32160Ft</div>
       <span class="product-name">Signature range rocket F3 5 db - 32 160Ft <img src="https://www.ekopiro.hu/resources/App/large/Signature-range-rocket-F3_rakety.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="3920"> 
+      <div>29000Ft</div>
       <span class="product-name">MERCURY 5 db - 3 920Ft<img src="https://www.ekopiro.hu/resources/App/202401111357570.MERCURY-5ks_rakety.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="23370">
+      <div>23370Ft</div>
       <span class="product-name">King Rocket 3 db - 23 370Ft <img src="https://www.ekopiro.hu/resources/App/large/King-Rocket-3ks_rakety.png" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="19799">
+      <div>19799Ft</div>
       <span class="product-name">Nexus 15 db -19 799Ft <img src="https://www.ekopiro.hu/resources/App/large/Nexus-15ks_rakety0.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="23990"> 
+      <div>23990Ft</div>
       <span class="product-name">NO LIMITS 4 db - 23 990Ft <img src="https://www.ekopiro.hu/resources/App/large/202011111728210.no-limits-4ks-rakety.png" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="8890">
+      <div>8890Ft</div>
       <span class="product-name">Venom 5 db - 8 890Ft <img src="https://www.ekopiro.hu/resources/App/large/Venom-5k_rakety.png" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
     <div class="product" data-price="26135">
+      <div>26135Ft</div>
       <span class="product-name">XXXL rocket 3db - 26 135Ft <img src="https://www.ekopiro.hu/resources/App/large/202310251324330.XXXL-rocket-3ks_rakety0.jpg" alt=""></span>
       <button class="add-to-cart">Kosárba</button>
     </div>
@@ -95,17 +128,36 @@
     <script src="script.js"></script>
     
     <script>
-        function myFunction() {
-           var x = document.getElementById("myTopnav");
-           if (x.className === "topnav") {
-             x.className += " responsive";
-           } else {
-             x.className = "topnav";
-           }
-         }
-         </script>
+      // Kosárba gomb animáció
+      document.addEventListener('click', function(event) {
+          if (event.target.classList.contains('add-to-cart')) {
+              const cartIcon = document.createElement('div');
+              cartIcon.innerHTML = '🛒';
+              cartIcon.style.position = 'fixed';
+              cartIcon.style.top = event.clientY + 'px';
+              cartIcon.style.left = event.clientX + 'px';
+              cartIcon.style.fontSize = '24px';
+              cartIcon.style.zIndex = '1000';
+              document.body.appendChild(cartIcon);
+
+              cartIcon.classList.add('cart-icon-animation');
+
+              setTimeout(() => {
+                  cartIcon.remove();
+              }, 500);
+          }
+      });
+
+      function myFunction() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+              x.className += " responsive";
+          } else {
+              x.className = "topnav";
+          }
+      }
+  </script>
      
 
-    <div id="navigation_up_down_87260"><noscript>Javascript is disable - <a href="http://www.webestools.com/">Webestools</a> - <a href="http://www.webestools.com/navigation-buttons-generator-scroll-top-bottom-shortcut-page-up-down-scroll-buttons-javascript.html">Navigation Buttons Generator html scroll up down</a></noscript><script type="text/javascript" src="http://services.webestools.com/navigation_up_down/2-87260-right.js"></script></div>
 </body>
 </html> 
